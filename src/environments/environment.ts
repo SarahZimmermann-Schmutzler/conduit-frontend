@@ -1,4 +1,5 @@
+// production server = backend-container
 export const environment = {
     production: true,
-    apiURL: 'http://localhost:8000'
+    apiUrl: 'http://backend:8000'
 };
