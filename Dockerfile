@@ -10,8 +10,8 @@ COPY . $WORKDIR
 
 # Install Yarn globally, install project dependencies, and build the Angular application in production mode
 RUN npm install -g yarn --force && \
-    yarn install && \
-    yarn build --prod
+    yarn install --frozen-lockfile --no-optional && \
+    yarn build
 
 
 # 2: Serve the application using Nginx
