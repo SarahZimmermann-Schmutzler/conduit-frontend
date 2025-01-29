@@ -1,6 +1,6 @@
 # 1: Build the Angular application
 # Base image for the build step
-FROM node:20 AS build
+FROM node:20-alpine AS build
 
 # Set the working directory inside the container
 WORKDIR /app
