@@ -17,7 +17,7 @@ COPY . $WORKDIR
 
 # Build Angular frontend
 # Prevents unnecessary logs & source maps → Faster & less memory consumption
-RUN npm run build -- --progress=false --no-source-map --max-old-space-size=512
+RUN npm run build -- --progress=false --no-source-map
 
 # 2: Serve the application using Nginx
 # Lightweight Nginx image for serving the application
