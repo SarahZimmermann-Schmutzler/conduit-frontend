@@ -4,34 +4,19 @@ const path = require('path');
 // Retrieve API_URL from environment variables
 const apiUrl = process.env.API_URL;
 
-if (!apiUrl) {
-  console.error("ERROR: API_URL is not set!");
-  process.exit(1); // Exit the script with an error
-}
+// environment files to be updated
+const environmentPath_ts = path.join(__dirname, 'src/environments/environment.ts');
+const environmentPath_dev = path.join(__dirname, 'src/environments/environment.development.ts');
 
-console.log(`Environment variable API_URL set to: ${apiUrl}`);
+console.log(`Environment variable API_URL from .env-file set to: ${apiUrl}`);
 
-// List of environment files to be updated
-const envFiles = [
-  'src/environments/environment.ts',
-  'src/environments/environment.development.ts'
-];
+let fileContent_ts = fs.readFileSync(environmentPath_ts, 'utf8');
+let fileContent_dev = fs.readFileSync(environmentPath_dev, 'utf8');
 
-envFiles.forEach((envFile) => {
-  const environmentPath = path.join(__dirname, envFile);
+// Replace the existing apiUrl value with the new API_URL
+fileContent_ts = fileContent_ts.replace(/apiUrl: '.*'/, `apiUrl: '${apiUrl}'`);
+fileContent_dev = fileContent_dev.replace(/apiUrl: '.*'/, `apiUrl: '${apiUrl}'`);
 
-  if (fs.existsSync(environmentPath)) {
-    let fileContent = fs.readFileSync(environmentPath, 'utf8');
-
-    // Replace the existing apiUrl value with the new API_URL
-    fileContent = fileContent.replace(/apiUrl: '.*'/, `apiUrl: '${apiUrl}'`);
-
-    // Save the updated file
-    fs.writeFileSync(environmentPath, fileContent, 'utf8');
-
-    console.log(`${envFile} has been updated with API_URL=${apiUrl}`);
-  } else {
-    console.warn(`WARNING: ${envFile} does not exist and was skipped.`);
-  }
-});
-
+// Save the updated file
+fs.writeFileSync(environmentPath_ts, fileContent_ts, 'utf8');
+fs.writeFileSync(environmentPath_dev, fileContent_dev, 'utf8');

@@ -15,7 +15,6 @@ RUN npm install --legacy-peer-deps --prefer-offline --no-audit
 COPY . $WORKDIR
 
 ARG API_URL
-ENV API_URL=${API_URL}
 
 # Build Angular frontend
 RUN node env.js && \
