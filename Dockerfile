@@ -9,15 +9,16 @@ WORKDIR /app
 COPY package.json package-lock.json $WORKDIR
 
 # Install dependencies with npm
-# RUN npm install --legacy-peer-deps --prefer-offline --no-audit
-RUN npm ci --prefer-offline --no-audit --ignore-scripts
+RUN npm install --legacy-peer-deps --prefer-offline --no-audit
+# RUN npm ci --prefer-offline --no-audit --ignore-scripts
 
 # Copy all project files into the container
 COPY . $WORKDIR
 
 # Build Angular frontend
 # Prevents unnecessary logs & source maps → Faster & less memory consumption
-RUN npm run build -- --progress=false --no-source-map
+# RUN npm run build -- --progress=false --no-source-map
+RUN npm run build
 
 # 2: Serve the application using Nginx
 # Lightweight Nginx image for serving the application
