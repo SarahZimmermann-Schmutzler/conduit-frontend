@@ -18,7 +18,7 @@ ARG API_URL
 ENV API_URL=${API_URL}
 
 # Build Angular frontend
-RUN node env.js && \\
+RUN node env.js && \
     npm run build
 
 # 2: Serve the application using Nginx
