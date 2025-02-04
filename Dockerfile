@@ -14,18 +14,19 @@ RUN npm install --legacy-peer-deps --prefer-offline --no-audit
 # Copy all project files into the container
 COPY . $WORKDIR
 
+# Define a build-time variable for the API URL
 ARG API_URL
+
+# Set an environment variable for runtime, initialized with the ARG value
 ENV API_URL=${API_URL}
 
 # Build Angular frontend
-#RUN node env.js && \
-    #npm run build
-
 RUN echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts && \
     echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.development.ts && \
-    cat src/environments/environment.ts && \
-    cat src/environments/environment.development.ts && \
+    #cat src/environments/environment.ts && \
+    #cat src/environments/environment.development.ts && \
     npm run build
+
 
 # 2: Serve the application using Nginx
 # Lightweight Nginx image for serving the application
