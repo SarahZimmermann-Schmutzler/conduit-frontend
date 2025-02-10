@@ -21,8 +21,8 @@ ARG API_URL
 ENV API_URL=${API_URL}
 
 # Build Angular frontend
-RUN echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.development.ts && \
-    #echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts && \
+RUN echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts && \
+    echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.development.ts && \
     npm run build
     
 
