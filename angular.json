@@ -44,10 +44,7 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all",
-              "define": {
-                "API_URL": "API_URL_FROM_ENV"
-              }
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
