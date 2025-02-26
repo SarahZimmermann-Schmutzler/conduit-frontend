@@ -23,9 +23,9 @@ ENV API_URL=${API_URL}
 
 # for deployment with deployment.yml
 # Replace the placeholder in environment.prod.ts with API_URL
-#RUN echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.prod.ts &&\
-#    echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts &&\
-#    echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.development.ts
+RUN echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.prod.ts &&\
+    echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.ts &&\
+    echo "export const environment = { production: true, apiUrl: '$API_URL' };" > src/environments/environment.development.ts
 
 # Build Angular frontend
 RUN npm run build
