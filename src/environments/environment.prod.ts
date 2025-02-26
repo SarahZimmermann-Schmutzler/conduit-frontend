@@ -14,5 +14,6 @@ export const environment = {
     // for manual deployment without deployment.yml 
     // apiUrl: process.env.API_URL
     //for deployment with deployment.yml
-    apiUrl: "API_URL"
+    // apiUrl: "API_URL"
+    apiUrl: process.env["API_URL"]
 };
