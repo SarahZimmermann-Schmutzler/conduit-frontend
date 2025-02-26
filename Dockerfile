@@ -17,8 +17,13 @@ COPY . $WORKDIR
 # Define a build-time variable for the API URL
 ARG API_URL
 
+# for deployment without deployment.yml
 # Set an environment variable for runtime, initialized with the ARG value
-ENV API_URL=${API_URL}
+# ENV API_URL=${API_URL}
+
+# for deployment with deployment.yml
+# Replace the placeholder in environment.prod.ts with API_URL
+RUN sed -i "s|API_URL|${API_URL}|g" src/environments/environment.prod.ts
 
 # Build Angular frontend
 RUN npm run build
