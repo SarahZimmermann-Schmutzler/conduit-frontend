@@ -10,9 +10,6 @@ declare const process: {
 // Define the environment configuration for the production build.
 // API_URL is set in .env
 export const environment = {
-    production: true,
-    // for manual deployment without deployment.yml 
+    production: true, 
     apiUrl: process.env.API_URL
-    //for deployment with deployment.yml
-    // apiUrl: "API_URL_PLACEHOLDER"
 };
