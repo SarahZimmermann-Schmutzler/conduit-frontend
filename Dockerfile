@@ -17,7 +17,6 @@ COPY . $WORKDIR
 # Define a build-time variable for the API URL
 ARG API_URL
 
-# for deployment without deployment.yml
 # Set an environment variable for runtime, initialized with the ARG value
 ENV API_URL=${API_URL}
 
