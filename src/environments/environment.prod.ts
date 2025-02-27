@@ -12,7 +12,7 @@ declare const process: {
 export const environment = {
     production: true,
     // for manual deployment without deployment.yml 
-    // apiUrl: process.env.API_URL
+    apiUrl: process.env.API_URL
     //for deployment with deployment.yml
-    apiUrl: "API_URL_PLACEHOLDER"
+    // apiUrl: "API_URL_PLACEHOLDER"
 };

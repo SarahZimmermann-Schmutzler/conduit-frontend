@@ -22,7 +22,7 @@ ENV API_URL=${API_URL}
 
 # for deployment with deployment.yml
 # Replace the placeholder in environment.prod.ts with API_URL
-RUN sed -i "s|API_URL_PLACEHOLDER|${API_URL}|g" src/environments/environment.prod.ts
+# RUN sed -i "s|API_URL_PLACEHOLDER|${API_URL}|g" src/environments/environment.prod.ts
 
 # Build Angular frontend
 RUN npm run build
